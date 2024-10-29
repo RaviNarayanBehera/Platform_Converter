@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../Provider/theme_controller.dart';
-
-class MyTextField extends StatelessWidget {
+class TextFields extends StatelessWidget {
   final TextEditingController controller;
   final String label;
   final TextInputType? textInputType;
   final Icon prefixIcon;
 
-  const MyTextField({
+  const TextFields({
     super.key,
     required this.controller,
     required this.label,
@@ -33,9 +30,6 @@ class MyTextField extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: (Provider.of<ThemeController>(context).isDark)
-                ? Colors.white
-                : Colors.black,
             width: 2,
           ),
         ),

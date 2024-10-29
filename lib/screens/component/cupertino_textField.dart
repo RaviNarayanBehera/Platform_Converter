@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
 
-import '../../Provider/theme_controller.dart';
+import 'package:flutter/cupertino.dart';
+
+import '../../main.dart';
 
 class MyCupertinoTextField extends StatelessWidget {
   final String placeholder;
@@ -25,17 +25,16 @@ class MyCupertinoTextField extends StatelessWidget {
       placeholder: placeholder,
       keyboardType: textInputType,
       style: TextStyle(
-        color: Provider.of<ThemeController>(context).isDark
-            ? CupertinoColors.white
-            : CupertinoColors.black,
+        color: (theme.isDark.value) ? CupertinoColors.white : CupertinoColors.black,
       ),
       controller: controller,
       prefix: Icon(icons),
       decoration: BoxDecoration(
         border: Border.all(
-          color: (Provider.of<ThemeController>(context).isDark)
-              ? CupertinoColors.white
-              : CupertinoColors.darkBackgroundGray,
+          color: (theme.isDark.value) ? CupertinoColors.white : CupertinoColors.darkBackgroundGray,
+          // color: (Provider.of<ThemeController>(context).isDark)
+          //     ? CupertinoColors.white
+          //     : CupertinoColors.darkBackgroundGray,
         ),
         borderRadius: BorderRadius.circular(10),
       ),

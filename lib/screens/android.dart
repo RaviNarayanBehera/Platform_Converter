@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../adaptives/call_screen.dart';
-import '../../adaptives/chat_screen.dart';
-import '../../adaptives/setting_screen.dart';
-import '../Provider/platform_change.dart';
-import '../adaptives/add_user.dart';
+import '../main.dart';
+import 'component/add_user.dart';
+import 'component/callList_page.dart';
+import 'component/chat.dart';
+import 'component/setting_page.dart';
 
 class AndroidUi extends StatelessWidget {
   const AndroidUi({super.key});
@@ -16,17 +15,17 @@ class AndroidUi extends StatelessWidget {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Platform Converter'),
+          title: const Text('PlatForm Converter'),
           actions: [
-            Consumer<PlatformChangeProvider>(builder: (context, value, child) {
-              return Switch(
-                value: value.isIos,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Switch(
+                value: converter.isIos.value,
                 onChanged: (value) {
-                  Provider.of<PlatformChangeProvider>(context, listen: false)
-                      .toggleBetweenPlatforms();
+                  converter.changePlatform();
                 },
-              );
-            }),
+              ),
+            ),
           ],
           bottom: const TabBar(
             tabAlignment: TabAlignment.fill,
@@ -35,18 +34,24 @@ class AndroidUi extends StatelessWidget {
               Tab(
                 child: Icon(Icons.account_circle),
               ),
-              Tab(text: 'CHATS'),
-              Tab(text: 'CALLS'),
-              Tab(text: 'SETTINGS'),
+              Tab(
+                text: 'CHATS',
+              ),
+              Tab(
+                text: 'CALLS',
+              ),
+              Tab(
+                text: 'SETTINGS',
+              ),
             ],
           ),
         ),
         body: const TabBarView(
           children: [
-            AddUsers(),
-            ChatScreen(),
-            CallScreen(),
-            SettingScreen(),
+            AddUser(),
+            ChatPage(),
+            CalllistPage(),
+            SettingsPage()
           ],
         ),
       ),

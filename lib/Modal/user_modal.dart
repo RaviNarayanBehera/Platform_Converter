@@ -1,19 +1,18 @@
-class UserModal {
+class PlatformModal
+{
   late String name, phone, chatConversation, profile, date, time;
   int? id;
 
-  UserModal({
-    this.id,
+  PlatformModal({ this.id,
     required this.name,
     required this.phone,
     required this.chatConversation,
     required this.profile,
     required this.date,
-    required this.time,
-  });
+    required this.time,});
 
-  factory UserModal.fromMap(Map m1) {
-    return UserModal(
+  factory PlatformModal.fromMap(Map m1) {
+    return PlatformModal(
       id: m1['id'],
       name: m1['name'],
       phone: m1['phone'],
@@ -23,15 +22,15 @@ class UserModal {
       time: m1['time'],
     );
   }
-}
 
-Map<String, dynamic> toMap(UserModal user) {
-  return {
-    'name': user.name,
-    'phone': user.phone,
-    'chatConversation': user.chatConversation,
-    'profile': user.profile,
-    'date': user.date,
-    'time': user.time,
-  };
+  Map<String, dynamic> toMap(PlatformModal user) {
+    return {
+      'name': user.name,
+      'phone': user.phone,
+      'chatConversation': user.chatConversation,
+      'profile': user.profile,
+      'date': user.date,
+      'time': user.time,
+    };
+  }
 }

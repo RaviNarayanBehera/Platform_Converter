@@ -1,45 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:platform_converter/screens/Cupertino.dart';
+import 'package:get/get.dart';
+import 'package:platform_converter/screens/Ios/ios_ui.dart';
 import 'package:platform_converter/screens/android.dart';
+import 'package:platform_converter/screens/theme/global.dart';
 
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'controller/platform_convert.dart';
+import 'controller/theme_controller.dart';
+// Fixed import
 
-import 'Provider/platform_change.dart';
-import 'Provider/platform_provider.dart';
-import 'Provider/task_provider.dart';
-import 'Provider/theme_controller.dart';
-
-bool isDark = false;
-bool isIos = false;
-
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  isDark = sharedPreferences.getBool("theme") ?? false;
-  isIos = sharedPreferences.getBool("platform") ?? false;
-
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => Task1Provider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => PlatFormProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => ThemeController(isDark),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => PlatformChangeProvider(isIos),
-        ),
-      ],
-      child: const MyApp(),
-    ),
-  );
+void main() {
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -47,21 +18,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var providerTheme = Provider.of<ThemeController>(context);
-    return (!Provider.of<PlatformChangeProvider>(context).isIos)
-        ? MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: (providerTheme.isDark)
-                ? providerTheme.themeDark
-                : providerTheme.themeLight,
-            home: const AndroidUi(),
-          )
-        : CupertinoApp(
-            debugShowCheckedModeBanner: false,
-            theme: (providerTheme.isDark)
-                ? providerTheme.cupertinoThemeDark
-                : providerTheme.cupertinoThemeLight,
-            home: const IosUi(),
-          );
+    return Obx(() => converter.isIos.value
+        ? CupertinoApp(
+      debugShowCheckedModeBanner: false,
+      theme: theme.isDark.value
+          ? GlobalTheme.cupertinoThemeDark
+          : GlobalTheme.cupertinoThemeLight,
+      home: IosUi(),
+    )
+        : GetMaterialApp(
+      theme: GlobalTheme.themeLight,
+      darkTheme: GlobalTheme.themeDark,
+      themeMode: theme.isDark.value ? ThemeMode.dark : ThemeMode.light,
+      debugShowCheckedModeBanner: false,
+      home: const AndroidUi(),
+    ));
   }
 }
+
+var theme = Get.put(ThemeController());
+var converter = Get.put(PaltformConverter()); // Fixed typo
