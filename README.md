@@ -1,16 +1,19 @@
 # platform_converter
 
-A new Flutter project.
+# Android View
 
-## Getting Started
+<h1 align = "center">
+  <img src= "https://github.com/user-attachments/assets/4cbfd14f-7bec-49fc-b971-e8a6e6d10ea2" height=65%  width=22%>
+  <img src= "https://github.com/user-attachments/assets/7b3187ae-d4a9-4735-a713-879b3e1ab770" height=65%  width=22%>
+  <img src= "https://github.com/user-attachments/assets/a5ce63d3-fa93-42c0-a25d-0e5539a583fe" height=65%  width=22%>
+  <img src= "https://github.com/user-attachments/assets/09c1af0c-3e7c-44db-8d3d-366a0d103eb2" height=65%  width=22%>
+</h1>
 
-This project is a starting point for a Flutter application.
+# Cupertino View
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<h1 align = "center">
+  <img src= "https://github.com/user-attachments/assets/882a9295-d83a-44ef-bac0-b54491161120" height=65%  width=22%>
+  <img src= "https://github.com/user-attachments/assets/b5eebecb-b471-4d33-bada-1ff5b93cd86d" height=65%  width=22%>
+  <img src= "https://github.com/user-attachments/assets/16ab85b8-ce79-4126-bb45-88ba47ad02be" height=65%  width=22%>
+  <img src= "https://github.com/user-attachments/assets/01a5a9ab-ba54-4b5f-97b1-dfb7f979eff4" height=65%  width=22%>
+</h1>
